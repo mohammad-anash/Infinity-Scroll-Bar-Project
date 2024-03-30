@@ -1,12 +1,15 @@
 const container = makeAndFixElement("div", "class", "container", document.body);
 
 function createBoxes(n) {
+  const frangment = document.createDocumentFragment();
   for (let i = 1; i <= n; i++) {
     const box = document.createElement("div");
     box.classList.add("box");
-    container.appendChild(box);
+    frangment.appendChild(box);
   }
-  return container;
+
+  container.append(frangment);
+  return frangment;
 }
 
 function makeAndFixElement(ele, attType, attName, appendWith) {
@@ -22,9 +25,11 @@ function makeAndFixElement(ele, attType, attName, appendWith) {
   return element;
 }
 
-window.addEventListener("scroll", function (e) {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    createBoxes(16);
+window.addEventListener("scroll", function () {
+  // console.log(window.innerHeight+ window.scrollY);
+  // console.log(document.body.offsetHeight);
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight + 200) {
+    createBoxes(4);
   }
 });
 createBoxes(16);
