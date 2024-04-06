@@ -62,3 +62,10 @@ function handleImageFunctionality(element, operationType) {
     selectedImg = element;
   }
 }
+
+window.addEventListener("scroll", function (details) {
+  const currentValue = Math.floor(this.scrollY);
+  if (currentValue >= 1343) {
+    generateImage(10);
+  }
+});
